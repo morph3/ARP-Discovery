@@ -1,4 +1,5 @@
 import time
+import socket,struct
 from scapy.layers.l2 import arping
 print("Import succesfull")
 def parsePacket(resp,hostList):
@@ -14,6 +15,11 @@ def parsePacket(resp,hostList):
             hostList.append(dict({item[1].psrc: item[1].hwsrc}))
             print("Captured IP and MAC -->",dict({item[1].psrc: item[1].hwsrc}) )
             print("[*]Discovered hosts: ",hostNumber)
+def ipParser(startIp,endIp):
+    #not using atm ,but will be usefull in optimization.
+    start = struct.unpack('>I', socket.inet_aton(startIp))[0]
+    end = struct.unpack('>I', socket.inet_aton(endIp))[0]
+    return [socket.inet_ntoa(struct.pack('>I', i)) for i in range(start, end)]
 
 if __name__ == "__main__":
     #resp[0]             ---> arping results
