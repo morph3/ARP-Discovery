@@ -2,13 +2,13 @@
 Simple ARP Discovery in a given range.
 
 
-###Prerequisites
+### Prerequisites
 
 ```
     python -m pip install scapy
 ```
 
-###Example Run
+### Example Run
  
 ```
     Enter ip range :10.10.10.1/24
